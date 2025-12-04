@@ -30,10 +30,10 @@ public class VersionConfig  {
 
 	public String currentVersion;
 
-	@Init
-	public void afterInjection() {
-		checkVersion();
-	}
+//	@Init
+//	public void afterInjection() {
+//		checkVersion();
+//	}
 
 	public void checkVersion(){
 		// 获取版本号
