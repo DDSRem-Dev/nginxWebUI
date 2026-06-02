@@ -35,6 +35,8 @@ docker buildx build \
     --platform "$arch" \
     --tag cym1102/nginxwebui:${ver} \
     --tag cym1102/nginxwebui:latest \
+    --tag registry.cn-hangzhou.aliyuncs.com/cym19871102/nginxwebui:${ver} \
+    --tag registry.cn-hangzhou.aliyuncs.com/cym19871102/nginxwebui:latest \
     --push \
     .
 
