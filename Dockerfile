@@ -48,5 +48,5 @@ RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositor
 COPY target/nginxWebUI-*.jar /home/nginxWebUI.jar
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN ["chmod", "+x", "/usr/local/bin/entrypoint.sh"]
-VOLUME ["/home/nginxWebUI"]
+# VOLUME ["/home/nginxWebUI"]
 ENTRYPOINT ["tini", "entrypoint.sh"]
