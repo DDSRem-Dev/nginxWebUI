@@ -277,24 +277,20 @@ public class ConfController extends BaseController {
 			nginxExe = null;
 		}
 
-		if (nginxPath != null) {
-			settingService.set("nginxPath", nginxPath);
-			// System.out.println("nginxPath -> " + nginxPath);
-		}
-		if (nginxExe != null) {
-			settingService.set("nginxExe", nginxExe);
-			// System.out.println("nginxExe -> " + nginxExe);
-		}
-		if (nginxDir != null) {
-			settingService.set("nginxDir", nginxDir);
-			// System.out.println("nginxDir -> " + nginxDir);
-		}
+//		if (nginxPath != null) {
+//			settingService.set("nginxPath", nginxPath);
+//		}
+//		if (nginxExe != null) {
+//			settingService.set("nginxExe", nginxExe);
+//		}
+//		if (nginxDir != null) {
+//			settingService.set("nginxDir", nginxDir);
+//		}
 
 		Map<String, String> map = new HashMap<>();
 		map.put("nginxPath", nginxPath);
 		map.put("nginxExe", nginxExe);
 		map.put("nginxDir", nginxDir);
-		// System.out.println("");
 		return renderSuccess(map);
 	}
 

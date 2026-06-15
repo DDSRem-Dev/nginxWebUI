@@ -90,14 +90,16 @@ public class AdminController extends BaseController {
 
 	@Mapping("changePassOver")
 	public JsonResult changePassOver(String id, String pass, Boolean auth) {
-		Admin admin = new Admin();
-		admin.setId(id);
-		admin.setPass(pass);
-		admin.setAuth(auth);
-
-		adminService.changePassOver(admin);
-
-		return renderSuccess();
+		return renderError("demo版不允许修改密码");
+		
+//		Admin admin = new Admin();
+//		admin.setId(id);
+//		admin.setPass(pass);
+//		admin.setAuth(auth);
+//
+//		adminService.changePassOver(admin);
+//
+//		return renderSuccess();
 	}
 
 	@Mapping("detail")
