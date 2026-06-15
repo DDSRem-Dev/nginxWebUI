@@ -64,28 +64,28 @@ public class AdminController extends BaseController {
 
 	@Mapping("addOver")
 	public JsonResult addOver(String id, String name, Boolean api, Integer type, String[] parentId) {
-
-		if (StrUtil.isEmpty(id)) {
-			Long count = adminService.getCountByName(name);
-			if (count > 0) {
-				return renderError(m.get("adminStr.nameRepetition"));
-			}
-		} else {
-			Long count = adminService.getCountByNameWithOutId(name, id);
-			if (count > 0) {
-				return renderError(m.get("adminStr.nameRepetition"));
-			}
-		}
-
-		Admin admin = new Admin();
-		admin.setId(id);
-		admin.setName(name);
-		admin.setApi(api);
-		admin.setType(type);
-
-		adminService.addOver(admin, parentId);
-
-		return renderSuccess();
+		return renderError("demo版不允许修改用户");
+//		if (StrUtil.isEmpty(id)) {
+//			Long count = adminService.getCountByName(name);
+//			if (count > 0) {
+//				return renderError(m.get("adminStr.nameRepetition"));
+//			}
+//		} else {
+//			Long count = adminService.getCountByNameWithOutId(name, id);
+//			if (count > 0) {
+//				return renderError(m.get("adminStr.nameRepetition"));
+//			}
+//		}
+//
+//		Admin admin = new Admin();
+//		admin.setId(id);
+//		admin.setName(name);
+//		admin.setApi(api);
+//		admin.setType(type);
+//
+//		adminService.addOver(admin, parentId);
+//
+//		return renderSuccess();
 	}
 
 	@Mapping("changePassOver")

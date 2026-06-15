@@ -211,14 +211,14 @@ public class ConfController extends BaseController {
 	 */
 	@Mapping(value = "check")
 	public JsonResult check(String nginxPath, String nginxExe, String nginxDir, String json) {
-		if (nginxExe == null) {
+//		if (nginxExe == null) {
 			nginxExe = ToolUtils.handleConf(settingService.get("nginxExe"));
 			settingService.set("nginxExe", nginxExe);
-		}
-		if (nginxDir == null) {
+//		}
+//		if (nginxDir == null) {
 			nginxDir = ToolUtils.handleConf(settingService.get("nginxDir"));
 			settingService.set("nginxDir", nginxDir);
-		}
+//		}
 
 		JSONObject jsonObject = JSONUtil.parseObj(json);
 		String nginxContent = Base64.decodeStr(jsonObject.getStr("nginxContent"), CharsetUtil.CHARSET_UTF_8);
@@ -314,18 +314,18 @@ public class ConfController extends BaseController {
 
 	@Mapping(value = "reload")
 	public synchronized JsonResult reload(String nginxPath, String nginxExe, String nginxDir) {
-		if (nginxPath == null) {
+//		if (nginxPath == null) {
 			nginxPath = ToolUtils.handlePath(settingService.get("nginxPath"));
 			settingService.set("nginxPath", nginxPath);
-		}
-		if (nginxExe == null) {
+//		}
+//		if (nginxExe == null) {
 			nginxExe = ToolUtils.handlePath(settingService.get("nginxExe"));
 			settingService.set("nginxExe", nginxExe);
-		}
-		if (nginxDir == null) {
+//		}
+//		if (nginxDir == null) {
 			nginxDir = ToolUtils.handlePath(settingService.get("nginxDir"));
 			settingService.set("nginxDir", nginxDir);
-		}
+//		}
 
 		try {
 			String cmd = nginxExe + " -s reload -c " + nginxPath;
@@ -352,39 +352,39 @@ public class ConfController extends BaseController {
 
 	@Mapping(value = "runCmd")
 	public JsonResult runCmd(String cmd, String type) {
-
-		if (StrUtil.isNotEmpty(type)) {
-			settingService.set(type, cmd);
-		}
-
-		// 仅执行nginx相关的命令，而不是其他的恶意命令
-		cmd = buildRealCmd(cmd);
-		if (StrUtil.isEmpty(cmd)) {
-			return renderSuccess(m.get("confStr.notAvailableCmd"));
-		}
-
-		try {
-			String rs = "";
-			if (SystemTool.isWindows()) {
-				RuntimeUtil.exec("cmd /c start " + cmd);
-			} else {
-				rs = RuntimeUtil.execForStr("/bin/sh", "-c", cmd);
-			}
-
-			cmd = "<span class='blue'>" + cmd + "</span>";
-			if (StrUtil.isEmpty(rs) || rs.contains("已终止进程") //
-					|| rs.contains("signal process started") //
-					|| rs.toLowerCase().contains("terminated process") //
-					|| rs.toLowerCase().contains("starting") //
-					|| rs.toLowerCase().contains("stopping")) {
-				return renderSuccess(cmd + "<br>" + m.get("confStr.runSuccess") + "<br>" + rs.replace("\n", "<br>"));
-			} else {
-				return renderSuccess(cmd + "<br>" + m.get("confStr.runFail") + "<br>" + rs.replace("\n", "<br>"));
-			}
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-			return renderSuccess(m.get("confStr.runFail") + "<br>" + e.getMessage().replace("\n", "<br>"));
-		}
+		return renderError("demo版不允许运行命令");
+//		if (StrUtil.isNotEmpty(type)) {
+//			settingService.set(type, cmd);
+//		}
+//
+//		// 仅执行nginx相关的命令，而不是其他的恶意命令
+//		cmd = buildRealCmd(cmd);
+//		if (StrUtil.isEmpty(cmd)) {
+//			return renderSuccess(m.get("confStr.notAvailableCmd"));
+//		}
+//
+//		try {
+//			String rs = "";
+//			if (SystemTool.isWindows()) {
+//				RuntimeUtil.exec("cmd /c start " + cmd);
+//			} else {
+//				rs = RuntimeUtil.execForStr("/bin/sh", "-c", cmd);
+//			}
+//
+//			cmd = "<span class='blue'>" + cmd + "</span>";
+//			if (StrUtil.isEmpty(rs) || rs.contains("已终止进程") //
+//					|| rs.contains("signal process started") //
+//					|| rs.toLowerCase().contains("terminated process") //
+//					|| rs.toLowerCase().contains("starting") //
+//					|| rs.toLowerCase().contains("stopping")) {
+//				return renderSuccess(cmd + "<br>" + m.get("confStr.runSuccess") + "<br>" + rs.replace("\n", "<br>"));
+//			} else {
+//				return renderSuccess(cmd + "<br>" + m.get("confStr.runFail") + "<br>" + rs.replace("\n", "<br>"));
+//			}
+//		} catch (Exception e) {
+//			logger.error(e.getMessage(), e);
+//			return renderSuccess(m.get("confStr.runFail") + "<br>" + e.getMessage().replace("\n", "<br>"));
+//		}
 	}
 
 	private String buildRealCmd(String cmd) {
@@ -503,30 +503,32 @@ public class ConfController extends BaseController {
 
 	@Mapping(value = "decompose")
 	public JsonResult decompose(String decompose) {
-		settingService.set("decompose", decompose);
+//		settingService.set("decompose", decompose);
 		return renderSuccess();
 	}
 
 	@Mapping(value = "update")
 	public JsonResult update() {
-		versionConfig.checkVersion();
-		if (Integer.parseInt(versionConfig.currentVersion.replace(".", "").replace("v", "")) < Integer.parseInt(versionConfig.newVersion.getVersion().replace(".", "").replace("v", ""))) {
-			mainController.autoUpdate(versionConfig.newVersion.getUrl());
-			return renderSuccess(m.get("confStr.updateSuccess"));
-		} else {
-			return renderSuccess(m.get("confStr.noNeedUpdate"));
-		}
+//		versionConfig.checkVersion();
+//		if (Integer.parseInt(versionConfig.currentVersion.replace(".", "").replace("v", "")) < Integer.parseInt(versionConfig.newVersion.getVersion().replace(".", "").replace("v", ""))) {
+//			mainController.autoUpdate(versionConfig.newVersion.getUrl());
+//			return renderSuccess(m.get("confStr.updateSuccess"));
+//		} else {
+//			return renderSuccess(m.get("confStr.noNeedUpdate"));
+//		}
+		
+		return renderSuccess(m.get("confStr.noNeedUpdate"));
 	}
 
-	@Mapping(value = "getKey")
-	public JsonResult getKey(String key) {
-		return renderSuccess(settingService.get(key));
-	}
-
-	@Mapping(value = "setKey")
-	public JsonResult setKey(String key, String val) {
-		settingService.set(key, val);
-		return renderSuccess();
-	}
+//	@Mapping(value = "getKey")
+//	public JsonResult getKey(String key) {
+//		return renderSuccess(settingService.get(key));
+//	}
+//
+//	@Mapping(value = "setKey")
+//	public JsonResult setKey(String key, String val) {
+//		settingService.set(key, val);
+//		return renderSuccess();
+//	}
 
 }

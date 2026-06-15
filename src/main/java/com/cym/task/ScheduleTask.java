@@ -77,11 +77,11 @@ public class ScheduleTask {
 	@Inject
 	VersionConfig versionConfig;
 
-	// 检查更新
-	@Scheduled(cron = "0 0 0 * * ?")
-	public void checkUpdate() {
-		versionConfig.checkVersion();
-	}
+//	// 检查更新
+//	@Scheduled(cron = "0 0 0 * * ?")
+//	public void checkUpdate() {
+//		versionConfig.checkVersion();
+//	}
 		
 	// 续签证书
 	@Scheduled(cron = "0 0 0/2 * * ?")
