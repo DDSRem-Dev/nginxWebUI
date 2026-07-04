@@ -2,8 +2,7 @@ FROM alpine:3.23
 ENV LANG=zh_CN.UTF-8 \
     TZ=Asia/Shanghai \
     PS1="\u@\h:\w \$ "
-RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
-    && apk add --update --no-cache \
+RUN apk add --update --no-cache \
     nginx=1.30.2-r1 \
     nginx-mod-stream=1.30.2-r1 \
     nginx-mod-stream-geoip=1.30.2-r1 \
