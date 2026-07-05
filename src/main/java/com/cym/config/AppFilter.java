@@ -33,6 +33,7 @@ import com.cym.utils.BaseController;
 import com.cym.utils.JsonResult;
 import com.cym.utils.MessageUtils;
 import com.cym.utils.PropertiesUtils;
+import com.cym.utils.ServerFingerprint;
 
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.io.FileUtil;
@@ -251,6 +252,8 @@ public class AppFilter implements Filter {
 
 		ctx.attrSet("showAdmin", ctx.param("showAdmin"));
 		ctx.attrSet("admin", ctx.session("admin"));
+
+		ctx.attrSet("machineId", ServerFingerprint.getFingerprint());
 
 		// 显示版本更新
 		if (versionConfig.newVersion != null && versionConfig.newVersion.getVersion() != null && versionConfig.currentVersion != null) {

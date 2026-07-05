@@ -5,15 +5,14 @@
 
 			<li class="layui-nav-item ">
 				<a class="" href="javascript:;">
-					<span style="color: aqua;" id="localType">
-					</span>
+					<span style="color: aqua;" id="localType"> </span>
 				</a>
 				<dl class="layui-nav-child">
 					<dd style="border-bottom: 1px solid #555;">
 						<a href="${ctx}/adminPage/monitor">${menuStr.monitor}</a>
 					</dd>
-					
-					
+
+
 					<dd>
 						<a href="${ctx}/adminPage/basic">${menuStr.basic}</a>
 					</dd>
@@ -29,12 +28,12 @@
 					<dd style="border-bottom: 1px solid #555;">
 						<a href="${ctx}/adminPage/upstream">${menuStr.upstream}</a>
 					</dd>
-					
-					
+
+
 					<dd>
 						<a href="${ctx}/adminPage/conf">${menuStr.conf}</a>
 					</dd>
-					
+
 					<dd>
 						<a href="${ctx}/adminPage/template">${menuStr.template}</a>
 					</dd>
@@ -50,7 +49,7 @@
 					<dd>
 						<a href="${ctx}/adminPage/cert">${menuStr.cert}</a>
 					</dd>
-					
+
 					<dd>
 						<a href="${ctx}/adminPage/log">${menuStr.log}</a>
 					</dd>
@@ -60,11 +59,11 @@
 					<dd>
 						<a href="${ctx}/adminPage/export">${menuStr.export}</a>
 					</dd>
-					
-					
+
+
 				</dl>
 			</li>
-			
+
 			<li class="layui-nav-item">
 				<a class="" href="javascript:;">
 					<span style="color: aqua;">${menuStr.remoteTitle}</span>
@@ -73,13 +72,13 @@
 					<dd>
 						<a href="${ctx}/adminPage/remote">${menuStr.remote}</a>
 					</dd>
-					<#if admin.type == 0 || showAdmin == 'true'>
-						<dd>
-							<a href="${ctx}/adminPage/admin">${menuStr.admin}</a>
-						</dd>
-						<dd>
-							<a href="${ctx}/adminPage/sso">${menuStr.sso}</a>
-						</dd>
+					<#if admin.type== 0 || showAdmin=='true'>
+					<dd>
+						<a href="${ctx}/adminPage/admin">${menuStr.admin}</a>
+					</dd>
+					<dd>
+						<a href="${ctx}/adminPage/sso">${menuStr.sso}</a>
+					</dd>
 					</#if>
 					<dd>
 						<a href="${ctx}/doc/api.html" target="_blank">${menuStr.doc}</a>
@@ -89,6 +88,44 @@
 					</dd>
 				</dl>
 			</li>
+
+
+			<#if admin.type== 0 || showAdmin=='true'>
+			<li class="layui-nav-item">
+				<a class="" href="javascript:;">
+					<span style="color: aqua;">CDN增值服务</span>
+				</a>
+				<dl class="layui-nav-child">
+					<dd>
+						<a href="${cdn}/userPage/productBuy?pageSize=20&machineId=${machineId}">套餐购买</a>
+					</dd>
+					<dd>
+						<a href="${cdn}/userPage/domain?pageSize=20&machineId=${machineId}">域名列表</a>
+					</dd>
+					<dd>
+						<a href="${cdn}/userPage/domainGroup?pageSize=20&machineId=${machineId}">域名分组</a>
+					</dd>
+					<dd>
+						<a href="${cdn}/userPage/upstream?pageSize=20&machineId=${machineId}">四层转发</a>
+					</dd>
+					<dd>
+						<a href="${cdn}/userPage/cert?pageSize=20&machineId=${machineId}">证书管理</a>
+					</dd>
+					<dd>
+						<a href="${cdn}/userPage/dnsApi?pageSize=20&machineId=${machineId}">DNS API</a>
+					</dd>
+					<dd>
+						<a href="${cdn}/userPage/refresh?pageSize=20&machineId=${machineId}">缓存刷新</a>
+					</dd>
+					<dd>
+						<a href="${cdn}/userPage/order?pageSize=20&machineId=${machineId}">已买套餐</a>
+					</dd>
+					<dd>
+						<a href="${cdn}/userPage/statsTab?pageSize=20&machineId=${machineId}">数据统计</a>
+					</dd>
+				</dl>
+			</li>
+			</#if>
 		</ul>
 	</div>
 </div>
