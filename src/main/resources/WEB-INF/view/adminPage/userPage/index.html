@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<#include "/adminPage/common.html"/>
+<style type="text/css">
+.layui-form-label {
+	width: 140px;
+}
+
+.layui-input-block {
+	margin-left: 170px;
+}
+</style>
+
+</head>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+
+		<#include "/adminPage/header.html"/>
+		<#include "/adminPage/menu.html"/>
+
+		<div class="layui-body" style="padding-bottom: 5px;">
+			<!-- 内容主体区域 -->
+			<iframe src="${url}" id="iframe" style="width: 100%;border: 0px;height: 100%;">
+			
+			</iframe>
+		</div>
+	</div>
+
+	<#include '/adminPage/script.html'/>
+	<script src="${ctx}/js/adminPage/userPage/index.js?v=${jsrandom}" type="text/javascript"></script>
+</body>
+
+
+</html>
